@@ -1,0 +1,23 @@
+{
+  "name": "vue-component",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fridolph/vue-component.git"
+  },
+  "keywords": [],
+  "author": "fridolph <249121486@qq.com> (http://github.com/fridolph)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fridolph/vue-component/issues"
+  },
+  "homepage": "https://github.com/Fridolph/vue-component#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
+}
