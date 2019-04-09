@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Component Demo</title>
+  <link rel="stylesheet" href="./assets/reset.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1131740_c2345bznzq4.css">
+</head>
+<body>
+  <div id="app">
+    <div>
+      <h3>Button</h3>
+      <g-btn>default</g-btn>
+      <g-btn icon="download">下载</g-btn>
+      <g-btn icon="setting" icon-position="right">设置</g-btn>
+      <g-btn :loading="btnLoading1" @click="btnLoading1 = !btnLoading1">加载中...</g-btn>
+      <g-btn-group>
+        <g-btn icon="zuo"></g-btn>
+        <g-btn>test</g-btn>
+        <g-btn icon="you"></g-btn>
+      </g-btn-group>
+    </div>
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>
