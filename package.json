@@ -1,10 +1,11 @@
 {
-  "name": "vue-component",
-  "version": "0.1.0",
+  "name": "fri-vue-comp",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-build": "npx parcel ./tests/**/* --no-cache",
+    "test": "npx parcel ./tests/**/* --no-cache --no-minify && karma start",
+    "test-build": "npx parcel ./tests/**/* --no-cache --no-minify",
     "test-start": "karma start"
   },
   "repository": {
