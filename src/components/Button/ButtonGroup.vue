@@ -12,7 +12,6 @@ export default {
       let name = node.nodeName.toLowerCase()
       if (name !== 'button') {
         console.warn(`g-button-group 的子元素应该全是 g-button , 但现在是 ${name}`)
-
       }
     }
   }
@@ -27,6 +26,7 @@ export default {
     margin-left -1px
     &:first-child
       border-radius var(--btn-radius) 0 0 var(--btn-radius)
+      margin-left 0
     &:last-child
       border-radius 0 var(--btn-radius) var(--btn-radius) 0
 </style>

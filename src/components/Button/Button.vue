@@ -1,5 +1,9 @@
 <template>
-  <button class="g-btn" :class="{[`vc-${iconPosition}`]: true}" @click="$emit('click')">
+  <button
+    class="g-btn"
+    :class="{[`vc-${iconPosition}`]: true}"
+    @click="$emit('click')"
+  >
     <!-- <i v-if="icon" :class="`vc vc-${icon}`"></i> -->
     <template v-if="loading">
       <g-icon type="loading"></g-icon>
@@ -18,23 +22,28 @@
 </template>
 
 <script>
+import Icon from "../Icon/Icon.vue";
+
 export default {
-  name: 'g-button',
+  name: "g-button",
+  components: {
+    "g-icon": Icon
+  },
   props: {
     icon: {
       type: String,
-      default: ''
+      default: ""
     },
     iconPosition: {
       type: String,
-      default: 'left'
+      default: "left"
     },
     loading: {
       type: Boolean,
       default: false
     }
   }
-}
+};
 </script>
 
 <style lang="stylus">
@@ -52,7 +61,7 @@ export default {
   font-size: var(--btn-fontSize)
   .vc
     order 1
-      margin 0 0.2em 0 0
+    margin 0 0.2em 0 0
   .content
     order 2
   &:hover
