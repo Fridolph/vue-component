@@ -2,12 +2,9 @@
   <div class="comp-view">
     <h2 class="logo-title">Vue Component</h2>
     <div class="side-menu">
-      <div>
-        <router-link to="/">首页</router-link>
-      </div>
-      <div>
-        <router-link to="/button">Button</router-link>
-      </div>
+      <div> <router-link to="/">首页</router-link> </div>
+      <div> <router-link to="/button">Button</router-link> </div>
+      <div> <router-link to="/input">Input</router-link> </div>
     </div>
     <div class="main-wrap">
       <router-view></router-view>

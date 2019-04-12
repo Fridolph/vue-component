@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .g-btn-group
   display inline-flex
   .g-btn

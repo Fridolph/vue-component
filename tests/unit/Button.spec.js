@@ -1,19 +1,21 @@
 import {expect} from 'chai'
-import sinon from 'sinon'
+// import sinon from 'sinon'
 import Vue from 'vue'
-import Button from '../../index'
+import Button from '../../src/components/Button/Button.vue'
+import ButtonGroup from '../../src/components/Button/ButtonGroup.vue'
 
 describe('Button', () => {
-  it('Button 左键点击可触发click事件', () => {
+  it('Exist', () => {
     const Ctor = Vue.extend(Button)
-    const vm = new Ctor({
-      propsData: {
-        icon: 'setting'
-      }
-    }).$mount()
-    // const callback = sinon.fake()
-    // vm.$on('click', callback)
-    // vm.$el.click()
+    const vm = new Ctor({}).$mount()
+    expect(vm).to.exist
+  })
+})
+
+describe('ButtonGroup', () => {
+  it('Exist', () => {
+    const Ctor = Vue.extend(ButtonGroup)
+    const vm = new Ctor({}).$mount()
     expect(vm).to.exist
   })
 })

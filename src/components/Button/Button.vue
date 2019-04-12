@@ -46,7 +46,7 @@ export default {
 };
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .g-btn
   display inline-flex
   justify-content center
