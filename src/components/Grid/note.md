@@ -1,3 +1,4 @@
+直接这样写很麻烦， 可以用 stylus scss 里提供的 for loop 来计算
 
 .g-col[data-span="1"]
   width 4.1667%

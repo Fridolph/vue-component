@@ -1,13 +1,26 @@
 <template>
   <div class="comp-view">
-    <h2 class="logo-title">Vue Component</h2>
     <div class="side-menu">
-      <div> <router-link to="/">首页</router-link> </div>
-      <div> <router-link to="/button">Button</router-link> </div>
-      <div> <router-link to="/input">Input</router-link> </div>
-      <div> <router-link to="/grid">Grid</router-link> </div>
+      <div class="link-item">
+        <router-link to="/">首页</router-link>
+      </div>
+      <div class="link-item">
+        <router-link to="/button">Button</router-link>
+      </div>
+      <div class="link-item">
+        <router-link to="/input">Input</router-link>
+      </div>
+      <div class="link-item">
+        <router-link to="/grid">Grid</router-link>
+      </div>
+      <div class="link-item">
+        <router-link to="/layouts">Layouts</router-link>
+      </div>
     </div>
     <div class="main-wrap">
+      <template v-if="$route.name.includes('-')">
+        <h2 class="module-title">{{$route.name}}</h2>
+      </template>
       <router-view></router-view>
     </div>
   </div>
@@ -16,23 +29,35 @@
 <style lang="stylus" scoped>
 .comp-view
   position relative
-  .logo-title
-    padding 20px 0
-    // margin-bottom 20px
-    text-align center
+  .module-title
+    font-size 22px
+    color #58aed2
+    margin-bottom 20px
+
   .side-menu
     position fixed
     left 20px
-    top 80px
+    top 60px
     height calc(100vh - 90px)
     width 140px
     overflow hidden
     overflow-y auto
     border-right 1px dashed #ccc
+    .link-item
+      padding 6px
+      height 32px
+      line-height 20px
+      > a
+        color #666
+        text-decoration none
+      .router-link-exact-active
+        color #58aed2
+
   .main-wrap
     margin-left 200px
-    height calc(100vh - 75px)
+    height calc(100vh - 35px)
     overflow hidden
     overflow-y auto
-    padding-right 40px
+    padding 20px 40px 25px 0
+
 </style>

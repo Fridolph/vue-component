@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Button - 按钮</h3>
     <g-btn>default</g-btn>
     <g-btn icon="download">下载</g-btn>
     <g-btn
@@ -26,6 +25,9 @@ export default {
     return {
       btnLoading1: false
     }
+  },
+  mounted() {
+
   }
 }
 </script>

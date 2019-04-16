@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Grid - 栅格系统</h3>
     <g-row>
       <g-col span="12">
         <div>1</div>
