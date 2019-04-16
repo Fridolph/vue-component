@@ -34,5 +34,5 @@
     height calc(100vh - 75px)
     overflow hidden
     overflow-y auto
-    padding 10px 20px 20px
+    padding-right 40px
 </style>
