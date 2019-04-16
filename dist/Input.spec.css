@@ -1,0 +1,26 @@
+.g-input-wrapper[data-v-1865bb] {
+  font-size: 12px;
+  display: inline-block;
+}
+.g-input-wrapper > input[data-v-1865bb] {
+  height: 32px;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 0 8px;
+}
+.g-input-wrapper > input[data-v-1865bb]:hover {
+  border-color: #666;
+}
+.g-input-wrapper > input[data-v-1865bb]:focus {
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+  outline: none;
+}
+.g-input-wrapper > input[disabled][data-v-1865bb] {
+  border-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+}
+.g-input-wrapper.error[data-v-1865bb] {
+  position: relative;
+}
+

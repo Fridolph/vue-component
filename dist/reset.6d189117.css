@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  padding: 20px;
+}
+
+:root {
+  /* 颜色相关变量 */
+  --default-color: #333;
+
+  /* 按钮相关变量 */
+  --btn-fontSize: 14px;
+  --btn-height: 32px;
+  --btn-bg: white;
+  --btn-bg_active: #eee;
+  --btn-radius: 3px;
+  --btn-borderColor: #999;
+  --btn-color_hover: red;
+}
+
+h3,h4,h5,h6 {
+  margin: 20px 0;
+}
+
+
+/*# sourceMappingURL=/reset.6d189117.css.map */
