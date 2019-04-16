@@ -16,6 +16,7 @@ import Sider from './components/Layouts/Sider.vue'
 import Content from './components/Layouts/Content.vue'
 import Header from './components/Layouts/Header.vue'
 import Footer from './components/Layouts/Footer.vue'
+import Toast from './components/Toast/Toast.vue'
 
 
 Vue.component('g-icon', Icon)
@@ -29,6 +30,7 @@ Vue.component('g-sider', Sider)
 Vue.component('g-content', Content)
 Vue.component('g-header', Header)
 Vue.component('g-footer', Footer)
+Vue.component('g-toast', Toast)
 
 export default new Vue({
   router,

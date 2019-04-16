@@ -3,7 +3,13 @@ node_js:
   - "8.11.4"
 addons:
   chrome: stable
+cache:
+  directories:
+    - node_modules
 sudo: required
 before_script:
   - "sudo chown root /opt/google/chrome/chrome-sandbox"
   - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
+script:
+  - npm run test-dev
+  - npm run karma

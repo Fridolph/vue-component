@@ -5,6 +5,7 @@ import pageButton from './views/button.vue'
 import pageInput from './views/input.vue'
 import pageGrid from './views/grid.vue'
 import pageLayouts from './views/layouts.vue'
+import pageToast from './views/toast.vue'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ const router = new Router({
       name: 'Layouts - 布局',
       path: '/layouts',
       component: pageLayouts
+    },
+    {
+      name: 'Toast - ',
+      path: '/toast',
+      component: pageToast
     },
   ]
 })

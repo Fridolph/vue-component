@@ -16,6 +16,9 @@
       <div class="link-item">
         <router-link to="/layouts">Layouts</router-link>
       </div>
+      <div class="link-item">
+        <router-link to="/toast">Toast</router-link>
+      </div>
     </div>
     <div class="main-wrap">
       <template v-if="$route.name.includes('-')">
