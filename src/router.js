@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HomePage from './views/home.vue'
-import ButtonPage from './views/button.vue'
-import InputPage from './views/Input.vue'
+import pageHome from './views/home.vue'
+import pageButton from './views/button.vue'
+import pageInput from './views/input.vue'
+import pageGrid from './views/grid.vue'
 
 Vue.use(Router)
 
@@ -10,16 +11,20 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      component: HomePage
+      component: pageHome
     },
     {
       path: '/button',
-      component: ButtonPage
+      component: pageButton
     },
     {
       path: '/input',
-      component: InputPage
-    }
+      component: pageInput
+    },
+    {
+      path: '/grid',
+      component: pageGrid
+    },
   ]
 })
 

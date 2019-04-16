@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h3>Input - 输入框</h3>
     <div>
       <h4>基础</h4>
       <g-input value="你好吗"></g-input>
