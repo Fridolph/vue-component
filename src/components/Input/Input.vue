@@ -21,34 +21,34 @@
 </template>
 
 <script>
-import Icon from "../Icon/Icon.vue";
+import Icon from '../Icon/Icon.vue'
 export default {
-  name: "g-input",
+  name: 'g-input',
   components: { Icon },
   props: {
     value: {
-      type: String
+      type: String,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     readonly: {
       type: Boolean,
-      default: false
+      default: false,
     },
     valid: {
       type: String,
       validator(value) {
         // 这个值必须匹配下列字符串中的一个
-        return ["", "pass", "warn", "error"].includes(value);
-      }
+        return ['', 'pass', 'warn', 'error'].indexOf(value) >= 0
+      },
     },
     tips: {
-      type: String
-    }
-  }
-};
+      type: String,
+    },
+  },
+}
 </script>
 
 <style lang="stylus" scoped>

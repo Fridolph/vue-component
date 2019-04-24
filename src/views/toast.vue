@@ -1,6 +1,8 @@
 <template>
   <div>
-
+    <button @click="showToast('top')">toast 上</button>
+    <button @click="showToast('middle')">toast 中</button>
+    <button @click="showToast('bottom')">toast 下</button>
   </div>
 </template>
 
@@ -8,9 +10,21 @@
 export default {
   name: 'page-toast',
   created() {
-    this.$toast()
   },
   methods: {
+    showToast(position) {
+      this.$toast('我是 <b>Toast</b>, 文字很多文字很多文字很多文字很多文字很多文字很多. <a href="#">链接</a>', {
+        enableHTML: true,
+        autoClose: false,
+        position,
+        closeButton: {
+          text: '知道',
+          callback(toast) {
+            toast.log()
+          }
+        }
+      })
+    }
   }
 }
 </script>

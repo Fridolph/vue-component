@@ -22889,7 +22889,7 @@ var validator = function validator(value) {
   var keys = Object.keys(value);
   var valid = true;
   keys.forEach(function (key) {
-    if (!['span', 'offset'].includes(key)) valid = false;
+    if (!['span', 'offset'].indexOf(key) >= 0) valid = false;
   });
   return valid;
 };
@@ -23142,7 +23142,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64975" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54139" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

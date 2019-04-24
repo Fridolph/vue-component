@@ -15703,6 +15703,13 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   name: 'page-layouts',
   data: function data() {
@@ -15772,6 +15779,20 @@ exports.default = _default;
           )
         ],
         1
+      ),
+      _vm._v(" "),
+      _c("h3", [_vm._v("左右固定，中间自适应")]),
+      _vm._v(" "),
+      _c(
+        "g-layout",
+        [
+          _c("g-sider", { staticStyle: { width: "200px" } }, [_vm._v("Sider")]),
+          _vm._v(" "),
+          _c("g-content", [_vm._v("Sider")]),
+          _vm._v(" "),
+          _c("g-sider", { staticStyle: { width: "200px" } }, [_vm._v("Sider")])
+        ],
+        1
       )
     ],
     1
@@ -15823,12 +15844,26 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   name: 'page-toast',
-  created: function created() {
-    this.$toast();
-  },
-  methods: {}
+  created: function created() {},
+  methods: {
+    showToast: function showToast(position) {
+      this.$toast('我是 <b>Toast</b>, 文字很多文字很多文字很多文字很多文字很多文字很多. <a href="#">链接</a>', {
+        enableHTML: true,
+        autoClose: false,
+        position: position,
+        closeButton: {
+          text: '知道',
+          callback: function callback(toast) {
+            toast.log();
+          }
+        }
+      });
+    }
+  }
 };
 exports.default = _default;
         var $d62424 = exports.default || module.exports;
@@ -15843,7 +15878,43 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            return _vm.showToast("top")
+          }
+        }
+      },
+      [_vm._v("toast 上")]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            return _vm.showToast("middle")
+          }
+        }
+      },
+      [_vm._v("toast 中")]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            return _vm.showToast("bottom")
+          }
+        }
+      },
+      [_vm._v("toast 下")]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -15994,7 +16065,7 @@ exports.default = _default;
       "div",
       { staticClass: "main-wrap" },
       [
-        _vm.$route.name.includes("-")
+        _vm.$route.name.indexOf("-") >= 0
           ? [
               _c("h2", { staticClass: "module-title" }, [
                 _vm._v(_vm._s(_vm.$route.name))
@@ -16364,7 +16435,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 var _default = {
-  name: "g-input",
+  name: 'g-input',
   components: {
     Icon: _Icon.default
   },
@@ -16384,7 +16455,7 @@ var _default = {
       type: String,
       validator: function validator(value) {
         // 这个值必须匹配下列字符串中的一个
-        return ["", "pass", "warn", "error"].includes(value);
+        return ['', 'pass', 'warn', 'error'].indexOf(value) >= 0;
       }
     },
     tips: {
@@ -16593,7 +16664,7 @@ var validator = function validator(value) {
   var keys = Object.keys(value);
   var valid = true;
   keys.forEach(function (key) {
-    if (!['span', 'offset'].includes(key)) valid = false;
+    if (!['span', 'offset'].indexOf(key) >= 0) valid = false;
   });
   return valid;
 };
@@ -17016,22 +17087,98 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-var _vue = _interopRequireDefault(require("vue"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 //
 //
 //
 //
-_vue.default.prototype.$toast = function () {
-  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'toast init...';
-  console.log(value);
-};
-
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
-  name: 'g-toast'
+  name: 'g-toast',
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: true
+    },
+    delay: {
+      type: Number,
+      default: 5
+    },
+    closeButton: {
+      type: Object,
+      default: function _default() {
+        return {
+          text: '关闭',
+          callback: undefined
+        };
+      }
+    },
+    enableHTML: {
+      type: Boolean,
+      default: false
+    },
+    position: {
+      type: String,
+      default: 'top',
+      validator: function validator(value) {
+        return ['top', 'bottom', 'middle'].indexOf(value) >= 0;
+      }
+    }
+  },
+  computed: {
+    toastPositionCls: function toastPositionCls() {
+      return "toast-position-".concat(this.position);
+    }
+  },
+  mounted: function mounted() {
+    this.execAutoClose();
+    this.updateStyles();
+  },
+  methods: {
+    execAutoClose: function execAutoClose() {
+      var _this = this;
+
+      if (this.autoClose) {
+        setTimeout(function () {
+          _this.close();
+        }, this.delay * 1000);
+      }
+    },
+    updateStyles: function updateStyles() {
+      var _this2 = this;
+
+      this.$nextTick(function () {
+        var toastText = _this2.$refs.toastText;
+        _this2.$refs.line.style.height = "".concat(toastText.getBoundingClientRect().height, "px");
+
+        if (_this2.position === 'bottom') {
+          toastText.style.top = "calc(100% - ".concat(toastText.getBoundingClientRect().height, "px)");
+        }
+      });
+    },
+    close: function close() {
+      this.$el.remove();
+      this.$emit('close');
+      this.$destroy();
+    },
+    log: function log() {
+      console.log('log 测试');
+    },
+    clickClose: function clickClose() {
+      this.close();
+
+      if (this.closeButton && typeof this.closeButton.callback === 'function') {
+        // this === Toast的实例
+        this.closeButton.callback(this);
+      }
+    }
+  }
 };
 exports.default = _default;
         var $02b4a9 = exports.default || module.exports;
@@ -17046,7 +17193,30 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("Toast")])
+  return _c("div", { staticClass: "toast-mask" }, [
+    _c(
+      "div",
+      { ref: "toastText", class: ["toast", _vm.toastPositionCls] },
+      [
+        !_vm.enableHTML
+          ? _vm._t("default")
+          : _c("div", {
+              domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
+            }),
+        _vm._v(" "),
+        _c("i", { ref: "line", staticClass: "split-line-h" }),
+        _vm._v(" "),
+        _vm.closeButton
+          ? _c("span", {
+              staticClass: "close",
+              domProps: { innerHTML: _vm._s(_vm.closeButton.text) },
+              on: { click: _vm.clickClose }
+            })
+          : _vm._e()
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -17055,7 +17225,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: null,
+            _scopeId: "data-v-02b4a9",
             functional: undefined
           };
         })());
@@ -17075,9 +17245,60 @@ render._withStripped = true
         }
 
         
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
       }
     })();
-},{"vue":"../node_modules/vue/dist/vue.common.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js"}],"main.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"plugin.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Toast = _interopRequireDefault(require("./components/Toast/Toast.vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var currentToast = null;
+var _default = {
+  install: function install(Vue, options) {
+    Vue.prototype.$toast = function (message, toastOptions, onClose) {
+      if (currentToast) {
+        currentToast.close();
+      }
+
+      currentToast = createToast({
+        message: message,
+        toastOptions: toastOptions,
+        onClose: function onClose() {
+          currentToast = null;
+        }
+      });
+
+      function createToast(_ref) {
+        var message = _ref.message,
+            toastOptions = _ref.toastOptions,
+            onClose = _ref.onClose;
+        var Ctor = Vue.extend(_Toast.default);
+        var toast = new Ctor({
+          propsData: toastOptions
+        }); // toast message
+
+        toast.$slots.default = [message];
+        toast.$mount();
+        toast.$on('close', onClose);
+        document.body.appendChild(toast.$el);
+        return toast;
+      }
+    };
+  }
+};
+exports.default = _default;
+},{"./components/Toast/Toast.vue":"components/Toast/Toast.vue"}],"main.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17115,10 +17336,14 @@ var _Footer = _interopRequireDefault(require("./components/Layouts/Footer.vue"))
 
 var _Toast = _interopRequireDefault(require("./components/Toast/Toast.vue"));
 
+var _plugin = _interopRequireDefault(require("./plugin"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue.default.config.productionTip = false;
 _vue.default.config.devtools = true;
+
+_vue.default.use(_plugin.default);
 
 _vue.default.component('g-icon', _Icon.default);
 
@@ -17152,7 +17377,7 @@ var _default = new _vue.default({
 }).$mount('#app');
 
 exports.default = _default;
-},{"vue":"../node_modules/vue/dist/vue.common.js","./router":"router.js","./App.vue":"App.vue","./components/Icon/Icon.vue":"components/Icon/Icon.vue","./components/Button/Button.vue":"components/Button/Button.vue","./components/Button/ButtonGroup.vue":"components/Button/ButtonGroup.vue","./components/Input/Input.vue":"components/Input/Input.vue","./components/Grid/Row.vue":"components/Grid/Row.vue","./components/Grid/Col.vue":"components/Grid/Col.vue","./components/Layouts/Layout.vue":"components/Layouts/Layout.vue","./components/Layouts/Sider.vue":"components/Layouts/Sider.vue","./components/Layouts/Content.vue":"components/Layouts/Content.vue","./components/Layouts/Header.vue":"components/Layouts/Header.vue","./components/Layouts/Footer.vue":"components/Layouts/Footer.vue","./components/Toast/Toast.vue":"components/Toast/Toast.vue"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.common.js","./router":"router.js","./App.vue":"App.vue","./components/Icon/Icon.vue":"components/Icon/Icon.vue","./components/Button/Button.vue":"components/Button/Button.vue","./components/Button/ButtonGroup.vue":"components/Button/ButtonGroup.vue","./components/Input/Input.vue":"components/Input/Input.vue","./components/Grid/Row.vue":"components/Grid/Row.vue","./components/Grid/Col.vue":"components/Grid/Col.vue","./components/Layouts/Layout.vue":"components/Layouts/Layout.vue","./components/Layouts/Sider.vue":"components/Layouts/Sider.vue","./components/Layouts/Content.vue":"components/Layouts/Content.vue","./components/Layouts/Header.vue":"components/Layouts/Header.vue","./components/Layouts/Footer.vue":"components/Layouts/Footer.vue","./components/Toast/Toast.vue":"components/Toast/Toast.vue","./plugin":"plugin.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -17180,7 +17405,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50454" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59135" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

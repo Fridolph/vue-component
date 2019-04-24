@@ -17,7 +17,9 @@ import Content from './components/Layouts/Content.vue'
 import Header from './components/Layouts/Header.vue'
 import Footer from './components/Layouts/Footer.vue'
 import Toast from './components/Toast/Toast.vue'
+import toast from './plugin'
 
+Vue.use(toast)
 
 Vue.component('g-icon', Icon)
 Vue.component('g-btn', Button)

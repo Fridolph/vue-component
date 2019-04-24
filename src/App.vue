@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="main-wrap">
-      <template v-if="$route.name.includes('-')">
+      <template v-if="$route.name.indexOf('-') >= 0">
         <h2 class="module-title">{{$route.name}}</h2>
       </template>
       <router-view></router-view>

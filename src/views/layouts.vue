@@ -19,6 +19,13 @@
         <g-footer>Footer</g-footer>
       </g-layout>
     </g-layout>
+
+    <h3>左右固定，中间自适应</h3>
+    <g-layout>
+      <g-sider style="width: 200px">Sider</g-sider>
+      <g-content>Sider</g-content>
+      <g-sider style="width: 200px">Sider</g-sider>
+    </g-layout>
   </div>
 </template>
 
