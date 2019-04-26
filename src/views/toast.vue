@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button @click="showToast('top')">toast 上</button>
-    <button @click="showToast('middle')">toast 中</button>
-    <button @click="showToast('bottom')">toast 下</button>
+    <g-btn @click="showToast('top')">toast 上</g-btn>
+    <g-btn @click="showToast('middle')">toast 中</g-btn>
+    <g-btn @click="showToast('bottom')">toast 下</g-btn>
   </div>
 </template>
 

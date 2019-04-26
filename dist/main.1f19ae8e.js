@@ -15878,43 +15878,47 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "button",
-      {
-        on: {
-          click: function($event) {
-            return _vm.showToast("top")
+  return _c(
+    "div",
+    [
+      _c(
+        "g-btn",
+        {
+          on: {
+            click: function($event) {
+              return _vm.showToast("top")
+            }
           }
-        }
-      },
-      [_vm._v("toast 上")]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        on: {
-          click: function($event) {
-            return _vm.showToast("middle")
+        },
+        [_vm._v("toast 上")]
+      ),
+      _vm._v(" "),
+      _c(
+        "g-btn",
+        {
+          on: {
+            click: function($event) {
+              return _vm.showToast("middle")
+            }
           }
-        }
-      },
-      [_vm._v("toast 中")]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        on: {
-          click: function($event) {
-            return _vm.showToast("bottom")
+        },
+        [_vm._v("toast 中")]
+      ),
+      _vm._v(" "),
+      _c(
+        "g-btn",
+        {
+          on: {
+            click: function($event) {
+              return _vm.showToast("bottom")
+            }
           }
-        }
-      },
-      [_vm._v("toast 下")]
-    )
-  ])
+        },
+        [_vm._v("toast 下")]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -17108,7 +17112,7 @@ var _default = {
     },
     delay: {
       type: Number,
-      default: 5
+      default: 4
     },
     closeButton: {
       type: Object,

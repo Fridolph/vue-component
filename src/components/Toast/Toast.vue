@@ -20,7 +20,7 @@ export default {
     },
     delay: {
       type: Number,
-      default: 5
+      default: 4
     },
     closeButton: {
       type: Object,
@@ -101,9 +101,7 @@ export default {
   background transparent
 
   .toast
-    animation fadeIn 0.4s
     background-color rgba(66,66,66,0.7)
-    border-radius 3px
     color #fff
     font-size 14px
     min-height 44px
@@ -115,10 +113,16 @@ export default {
     transform translate(-50%)
     &.toast-position-top
       top 0
+      border-radius 0 0 3px 3px
+      animation slideDown 0.4s
     &.toast-position-middle
       top 50%
-      transform translate(-50%, -50%)
-    // &.toast-position-bottom
+      border-radius 3px
+      transform translate(-50%, 0)
+      animation slideUp 0.4s
+    &.toast-position-bottom
+      border-radius 3px 3px 0 0
+      animation slideUp 0.4s
 
     @media screen and (min-width: 992px)
       width: 50%
@@ -138,11 +142,19 @@ export default {
       display block
       padding 16px
 
-@keyframes fadeIn
+@keyframes slideUp
   0%
     opacity 0
-    transform translateY(100%)
+    transform translate(-50%, 100%)
   100%
     opacity 1
-    transform translateY(0%)
+    transform translate(-50%, 0%)
+
+@keyframes slideDown
+  0%
+    opacity 0
+    transform translate(-50%, -100%)
+  100%
+    opacity 1
+    transform translate(-50%, 0%)
 </style>

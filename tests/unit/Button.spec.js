@@ -1,5 +1,4 @@
 import {expect} from 'chai'
-// import sinon from 'sinon'
 import Vue from 'vue'
 import Button from '../../src/components/Button/Button.vue'
 import ButtonGroup from '../../src/components/Button/ButtonGroup.vue'
