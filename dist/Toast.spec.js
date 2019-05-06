@@ -60460,7 +60460,7 @@ describe('Toast', function () {
         done();
       });
     });
-    it('closeButton', function () {
+    it('closeButton', function (done) {
       var callback = _sinon.default.fake();
 
       var Ctor = _vue.default.extend(_Toast.default);
@@ -60475,8 +60475,11 @@ describe('Toast', function () {
       }).$mount();
       var closeButton = vm.$el.querySelector('.close');
       (0, _chai.expect)(closeButton.textContent.trim()).to.eq('关闭吧');
-      closeButton.click();
-      (0, _chai.expect)(callback).to.have.been.called;
+      setTimeout(function () {
+        closeButton.click();
+        (0, _chai.expect)(callback).to.have.been.called;
+        done();
+      }, 200);
     });
     it('closeButton -> enableHTML', function () {
       var Ctor = _vue.default.extend(_Toast.default);
