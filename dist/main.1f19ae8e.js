@@ -15949,6 +15949,118 @@ render._withStripped = true
         
       }
     })();
+},{"vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"views/tabs.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'page-tabs'
+};
+exports.default = _default;
+        var $957595 = exports.default || module.exports;
+      
+      if (typeof $957595 === 'function') {
+        $957595 = $957595.options;
+      }
+    
+        /* template */
+        Object.assign($957595, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "g-tabs",
+        { attrs: { selected: "体育" } },
+        [
+          _c(
+            "g-tab-head",
+            [
+              _c("g-tab-nav", { attrs: { name: "体育" } }, [_vm._v("体育")]),
+              _vm._v(" "),
+              _c("g-tab-nav", { attrs: { name: "财经" } }, [_vm._v("财经")]),
+              _vm._v(" "),
+              _c("g-tab-nav", { attrs: { name: "新闻" } }, [_vm._v("新闻")])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "g-tab-body",
+            [
+              _c("g-tab-pane", { attrs: { name: "体育" } }, [
+                _vm._v("体育咨询")
+              ]),
+              _vm._v(" "),
+              _c("g-tab-pane", { attrs: { name: "财经" } }, [
+                _vm._v("财经咨询")
+              ]),
+              _vm._v(" "),
+              _c("g-tab-pane", { attrs: { name: "新闻" } }, [
+                _vm._v("新闻咨询")
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$957595', $957595);
+          } else {
+            api.reload('$957595', $957595);
+          }
+        }
+
+        
+      }
+    })();
 },{"vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"router.js":[function(require,module,exports) {
 "use strict";
 
@@ -15972,6 +16084,8 @@ var _grid = _interopRequireDefault(require("./views/grid.vue"));
 var _layouts = _interopRequireDefault(require("./views/layouts.vue"));
 
 var _toast = _interopRequireDefault(require("./views/toast.vue"));
+
+var _tabs = _interopRequireDefault(require("./views/tabs.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16002,11 +16116,15 @@ var router = new _vueRouter.default({
     name: 'Toast - ',
     path: '/toast',
     component: _toast.default
+  }, {
+    name: 'Tabs - 标签页',
+    path: '/tabs',
+    component: _tabs.default
   }]
 });
 var _default = router;
 exports.default = _default;
-},{"vue":"../node_modules/vue/dist/vue.common.js","vue-router":"../node_modules/vue-router/dist/vue-router.esm.js","./views/home.vue":"views/home.vue","./views/button.vue":"views/button.vue","./views/input.vue":"views/input.vue","./views/grid.vue":"views/grid.vue","./views/layouts.vue":"views/layouts.vue","./views/toast.vue":"views/toast.vue"}],"App.vue":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.common.js","vue-router":"../node_modules/vue-router/dist/vue-router.esm.js","./views/home.vue":"views/home.vue","./views/button.vue":"views/button.vue","./views/input.vue":"views/input.vue","./views/grid.vue":"views/grid.vue","./views/layouts.vue":"views/layouts.vue","./views/toast.vue":"views/toast.vue","./views/tabs.vue":"views/tabs.vue"}],"App.vue":[function(require,module,exports) {
 
         var $5bb8d6 = exports.default || module.exports;
       
@@ -16061,6 +16179,13 @@ exports.default = _default;
         "div",
         { staticClass: "link-item" },
         [_c("router-link", { attrs: { to: "/toast" } }, [_vm._v("Toast")])],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "link-item" },
+        [_c("router-link", { attrs: { to: "/tabs" } }, [_vm._v("Tabs")])],
         1
       )
     ]),
@@ -17302,7 +17427,435 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"./components/Toast/Toast.vue":"components/Toast/Toast.vue"}],"main.js":[function(require,module,exports) {
+},{"./components/Toast/Toast.vue":"components/Toast/Toast.vue"}],"components/Tabs/Tabs.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _vue = _interopRequireDefault(require("vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+var _default = {
+  name: 'g-tabs',
+  props: {
+    selected: {
+      type: String,
+      required: true
+    },
+    direction: {
+      type: String,
+      default: 'horizontal',
+      validator: function validator(value) {
+        return ['horizontal', 'vertical'].indexOf(value) >= 0;
+      }
+    }
+  },
+  data: function data() {
+    return {
+      eventBus: new _vue.default()
+    };
+  },
+  provide: function provide() {
+    return {
+      eventBus: this.eventBus
+    };
+  },
+  mounted: function mounted() {
+    this.eventBus.$emit('update:selected', this.selected);
+  }
+};
+exports.default = _default;
+        var $716495 = exports.default || module.exports;
+      
+      if (typeof $716495 === 'function') {
+        $716495 = $716495.options;
+      }
+    
+        /* template */
+        Object.assign($716495, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "g-tabs" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$716495', $716495);
+          } else {
+            api.reload('$716495', $716495);
+          }
+        }
+
+        
+      }
+    })();
+},{"vue":"../node_modules/vue/dist/vue.common.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js"}],"components/Tabs/Head.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+var _default = {
+  name: 'g-tab-head',
+  inject: ['eventBus'],
+  created: function created() {
+    console.log('给HEAD的eventBus', this.eventBus);
+  }
+};
+exports.default = _default;
+        var $2fba11 = exports.default || module.exports;
+      
+      if (typeof $2fba11 === 'function') {
+        $2fba11 = $2fba11.options;
+      }
+    
+        /* template */
+        Object.assign($2fba11, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "g-tab-head" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-2fba11",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$2fba11', $2fba11);
+          } else {
+            api.reload('$2fba11', $2fba11);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Tabs/Nav.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'g-tab-nav',
+  inject: ['eventBus'],
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    name: String | Number,
+    required: true
+  },
+  data: function data() {
+    return {
+      active: false
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    this.eventBus.$on('update:selected', function (name) {
+      if (name === _this.name) {
+        console.log("[x] ".concat(_this.name, "nav\u88AB\u9009\u4E2D\u4E86"));
+        _this.active = true;
+      } else {
+        console.log("[ ] ".concat(_this.name, "nav\u6CA1\u88AB\u9009\u4E2D"));
+        _this.active = false;
+      }
+    });
+  },
+  methods: {
+    xxx: function xxx() {
+      this.eventBus.$emit('update:selected', this.name);
+    }
+  }
+};
+exports.default = _default;
+        var $d2e3c4 = exports.default || module.exports;
+      
+      if (typeof $d2e3c4 === 'function') {
+        $d2e3c4 = $d2e3c4.options;
+      }
+    
+        /* template */
+        Object.assign($d2e3c4, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "g-tab-nav",
+      class: _vm.active ? "active" : "",
+      on: { click: _vm.xxx }
+    },
+    [_vm._t("default")],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-d2e3c4",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$d2e3c4', $d2e3c4);
+          } else {
+            api.reload('$d2e3c4', $d2e3c4);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Tabs/Body.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+var _default = {
+  name: 'g-tab-body',
+  inject: ['eventBus'],
+  created: function created() {
+    console.log('给BODY的eventBus', this.eventBus);
+  }
+};
+exports.default = _default;
+        var $e03095 = exports.default || module.exports;
+      
+      if (typeof $e03095 === 'function') {
+        $e03095 = $e03095.options;
+      }
+    
+        /* template */
+        Object.assign($e03095, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "g-tab-body" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$e03095', $e03095);
+          } else {
+            api.reload('$e03095', $e03095);
+          }
+        }
+
+        
+      }
+    })();
+},{"vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Tabs/Pane.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'g-tab-pane',
+  inject: ['eventBus'],
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    name: {
+      type: String | Number,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      active: false
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    this.eventBus.$on('update:selected', function (name) {
+      if (name === _this.name) {
+        console.log("[x] ".concat(_this.name, "pane\u88AB\u9009\u4E2D\u4E86"));
+        _this.active = true;
+      } else {
+        console.log("[ ] ".concat(_this.name, "pane\u6CA1\u88AB\u9009\u4E2D"));
+        _this.active = false;
+      }
+    });
+  },
+  methods: {
+    xxx: function xxx() {
+      this.eventBus.$emit('update:selected', this.name);
+    }
+  }
+};
+exports.default = _default;
+        var $5a7874 = exports.default || module.exports;
+      
+      if (typeof $5a7874 === 'function') {
+        $5a7874 = $5a7874.options;
+      }
+    
+        /* template */
+        Object.assign($5a7874, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.active
+    ? _c(
+        "div",
+        { staticClass: "tab-pane", class: _vm.active ? "active" : "" },
+        [_vm._t("default")],
+        2
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-5a7874",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$5a7874', $5a7874);
+          } else {
+            api.reload('$5a7874', $5a7874);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"main.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17342,6 +17895,16 @@ var _Toast = _interopRequireDefault(require("./components/Toast/Toast.vue"));
 
 var _plugin = _interopRequireDefault(require("./plugin"));
 
+var _Tabs = _interopRequireDefault(require("./components/Tabs/Tabs.vue"));
+
+var _Head = _interopRequireDefault(require("./components/Tabs/Head.vue"));
+
+var _Nav = _interopRequireDefault(require("./components/Tabs/Nav.vue"));
+
+var _Body = _interopRequireDefault(require("./components/Tabs/Body.vue"));
+
+var _Pane = _interopRequireDefault(require("./components/Tabs/Pane.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue.default.config.productionTip = false;
@@ -17373,6 +17936,16 @@ _vue.default.component('g-footer', _Footer.default);
 
 _vue.default.component('g-toast', _Toast.default);
 
+_vue.default.component('g-tabs', _Tabs.default);
+
+_vue.default.component('g-tab-head', _Head.default);
+
+_vue.default.component('g-tab-nav', _Nav.default);
+
+_vue.default.component('g-tab-body', _Body.default);
+
+_vue.default.component('g-tab-pane', _Pane.default);
+
 var _default = new _vue.default({
   router: _router.default,
   render: function render(h) {
@@ -17381,7 +17954,7 @@ var _default = new _vue.default({
 }).$mount('#app');
 
 exports.default = _default;
-},{"vue":"../node_modules/vue/dist/vue.common.js","./router":"router.js","./App.vue":"App.vue","./components/Icon/Icon.vue":"components/Icon/Icon.vue","./components/Button/Button.vue":"components/Button/Button.vue","./components/Button/ButtonGroup.vue":"components/Button/ButtonGroup.vue","./components/Input/Input.vue":"components/Input/Input.vue","./components/Grid/Row.vue":"components/Grid/Row.vue","./components/Grid/Col.vue":"components/Grid/Col.vue","./components/Layouts/Layout.vue":"components/Layouts/Layout.vue","./components/Layouts/Sider.vue":"components/Layouts/Sider.vue","./components/Layouts/Content.vue":"components/Layouts/Content.vue","./components/Layouts/Header.vue":"components/Layouts/Header.vue","./components/Layouts/Footer.vue":"components/Layouts/Footer.vue","./components/Toast/Toast.vue":"components/Toast/Toast.vue","./plugin":"plugin.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.common.js","./router":"router.js","./App.vue":"App.vue","./components/Icon/Icon.vue":"components/Icon/Icon.vue","./components/Button/Button.vue":"components/Button/Button.vue","./components/Button/ButtonGroup.vue":"components/Button/ButtonGroup.vue","./components/Input/Input.vue":"components/Input/Input.vue","./components/Grid/Row.vue":"components/Grid/Row.vue","./components/Grid/Col.vue":"components/Grid/Col.vue","./components/Layouts/Layout.vue":"components/Layouts/Layout.vue","./components/Layouts/Sider.vue":"components/Layouts/Sider.vue","./components/Layouts/Content.vue":"components/Layouts/Content.vue","./components/Layouts/Header.vue":"components/Layouts/Header.vue","./components/Layouts/Footer.vue":"components/Layouts/Footer.vue","./components/Toast/Toast.vue":"components/Toast/Toast.vue","./plugin":"plugin.js","./components/Tabs/Tabs.vue":"components/Tabs/Tabs.vue","./components/Tabs/Head.vue":"components/Tabs/Head.vue","./components/Tabs/Nav.vue":"components/Tabs/Nav.vue","./components/Tabs/Body.vue":"components/Tabs/Body.vue","./components/Tabs/Pane.vue":"components/Tabs/Pane.vue"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -17409,7 +17982,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59135" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59022" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

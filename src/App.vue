@@ -19,6 +19,9 @@
       <div class="link-item">
         <router-link to="/toast">Toast</router-link>
       </div>
+      <div class="link-item">
+        <router-link to="/tabs">Tabs</router-link>
+      </div>
     </div>
     <div class="main-wrap">
       <template v-if="$route.name.indexOf('-') >= 0">

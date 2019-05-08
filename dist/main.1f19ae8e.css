@@ -936,3 +936,22 @@
 }
 }
 
+.g-tab-head[data-v-2fba11] {
+  display: flex;
+  height: $tab-height;
+  align-items: center;
+  border: 1px solid #dedede;
+}
+
+.g-tab-nav[data-v-d2e3c4] {
+  padding: 0 1em;
+  cursor: pointer;
+}
+.g-tab-nav.active[data-v-d2e3c4] {
+  color: #f00;
+}
+
+.tab-pane[data-v-5a7874] {
+  flex-shrink: 0;
+}
+

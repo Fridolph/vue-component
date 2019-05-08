@@ -6,6 +6,7 @@ import pageInput from './views/input.vue'
 import pageGrid from './views/grid.vue'
 import pageLayouts from './views/layouts.vue'
 import pageToast from './views/toast.vue'
+import pageTabs from './views/tabs.vue'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ const router = new Router({
       path: '/toast',
       component: pageToast
     },
+    {
+      name: 'Tabs - 标签页',
+      path: '/tabs',
+      component: pageTabs
+    }
   ]
 })
 
