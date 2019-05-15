@@ -941,6 +941,12 @@
   height: $tab-height;
   align-items: center;
   border: 1px solid #dedede;
+  position: relative;
+}
+.g-tab-head .line[data-v-2fba11] {
+  position: absolute;
+  bottom: 0;
+  border-bottom: px solid #87ceeb;
 }
 
 .g-tab-nav[data-v-d2e3c4] {

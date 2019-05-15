@@ -1,5 +1,5 @@
 <template>
-  <div class="g-tab-nav" @click="xxx" :class="active ? 'active' : ''">
+  <div class="g-tab-nav" @click="selectNav" :class="active ? 'active' : ''">
     <slot></slot>
   </div>
 </template>
@@ -21,10 +21,10 @@ export default {
       active: false,
     }
   },
-  created() {
-    this.eventBus.$on('update:selected', name => {
+  mounted() {
+    this.eventBus.$on('update:selected', (name, vm) => {
       if (name === this.name) {
-        console.log(`[x] ${this.name}nav被选中了`)
+        console.log(`[x] ${this.name}nav被选中了`, vm.$el)
         this.active = true
       } else {
         console.log(`[ ] ${this.name}nav没被选中`)
@@ -33,7 +33,7 @@ export default {
     })
   },
   methods: {
-    xxx() {
+    selectNav() {
       this.eventBus.$emit('update:selected', this.name)
     }
   }

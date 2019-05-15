@@ -17470,7 +17470,17 @@ var _default = {
     };
   },
   mounted: function mounted() {
-    this.eventBus.$emit('update:selected', this.selected);
+    var _this = this;
+
+    this.$children.forEach(function (vm) {
+      if (vm.$options.name === 'g-tab-head') {
+        vm.$children.forEach(function (nav) {
+          if (nav.$options.name == 'g-tab-nav' && nav.name == _this.selected) {
+            _this.eventBus.$emit('update:selected', _this.selected, nav);
+          }
+        });
+      }
+    });
   }
 };
 exports.default = _default;
@@ -17528,11 +17538,22 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
 var _default = {
   name: 'g-tab-head',
   inject: ['eventBus'],
-  created: function created() {
-    console.log('给HEAD的eventBus', this.eventBus);
+  mounted: function mounted() {
+    this.eventBus.$on('update:selected', function (nav, vm) {
+      var _vm$$el$getBoundingCl = vm.$el.getBoundingClientRect(),
+          width = _vm$$el$getBoundingCl.width,
+          height = _vm$$el$getBoundingCl.height,
+          top = _vm$$el$getBoundingCl.top,
+          left = _vm$$el$getBoundingCl.left;
+
+      console.log('head触发', vm.$el.getBoundingClientRect()); // this.$refs.line.style.width = `${width}px`
+    });
   }
 };
 exports.default = _default;
@@ -17548,7 +17569,16 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "g-tab-head" }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    { staticClass: "g-tab-head" },
+    [
+      _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { ref: "line", staticClass: "line" })
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -17612,12 +17642,12 @@ var _default = {
       active: false
     };
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
-    this.eventBus.$on('update:selected', function (name) {
+    this.eventBus.$on('update:selected', function (name, vm) {
       if (name === _this.name) {
-        console.log("[x] ".concat(_this.name, "nav\u88AB\u9009\u4E2D\u4E86"));
+        console.log("[x] ".concat(_this.name, "nav\u88AB\u9009\u4E2D\u4E86"), vm.$el);
         _this.active = true;
       } else {
         console.log("[ ] ".concat(_this.name, "nav\u6CA1\u88AB\u9009\u4E2D"));
@@ -17626,7 +17656,7 @@ var _default = {
     });
   },
   methods: {
-    xxx: function xxx() {
+    selectNav: function selectNav() {
       this.eventBus.$emit('update:selected', this.name);
     }
   }
@@ -17649,7 +17679,7 @@ exports.default = _default;
     {
       staticClass: "g-tab-nav",
       class: _vm.active ? "active" : "",
-      on: { click: _vm.xxx }
+      on: { click: _vm.selectNav }
     },
     [_vm._t("default")],
     2

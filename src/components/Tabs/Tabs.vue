@@ -31,7 +31,15 @@ export default {
     }
   },
   mounted() {
-    this.eventBus.$emit('update:selected', this.selected)
+    this.$children.forEach(vm => {
+      if (vm.$options.name === 'g-tab-head') {
+        vm.$children.forEach(nav => {
+          if (nav.$options.name == 'g-tab-nav' && nav.name == this.selected) {
+            this.eventBus.$emit('update:selected', this.selected, nav)
+          }
+        })
+      }
+    })
   }
 }
 </script>
