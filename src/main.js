@@ -23,6 +23,7 @@ import TabHead from './components/Tabs/Head.vue'
 import TabNav from './components/Tabs/Nav.vue'
 import TabBody from './components/Tabs/Body.vue'
 import TabPane from './components/Tabs/Pane.vue'
+import Tooltip from './components/Tooltip/Tooltip.vue'
 
 Vue.use(toast)
 
@@ -43,6 +44,7 @@ Vue.component('g-tab-head', TabHead)
 Vue.component('g-tab-nav', TabNav)
 Vue.component('g-tab-body', TabBody)
 Vue.component('g-tab-pane', TabPane)
+Vue.component('g-tooltip', Tooltip)
 
 export default new Vue({
   router,

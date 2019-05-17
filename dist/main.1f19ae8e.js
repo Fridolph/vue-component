@@ -16072,13 +16072,96 @@ render._withStripped = true
         
       }
     })();
-},{"vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"router.js":[function(require,module,exports) {
+},{"vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"views/tooltip.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'page-tooltip',
+  created: function created() {},
+  methods: {}
+};
+exports.default = _default;
+        var $01d88a = exports.default || module.exports;
+      
+      if (typeof $01d88a === 'function') {
+        $01d88a = $01d88a.options;
+      }
+    
+        /* template */
+        Object.assign($01d88a, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "g-tooltip",
+        [
+          _c("template", { slot: "content" }, [
+            _vm._v("\n      tooltip content\n    ")
+          ]),
+          _vm._v(" "),
+          _c("button", [_vm._v("点我")])
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$01d88a', $01d88a);
+          } else {
+            api.reload('$01d88a', $01d88a);
+          }
+        }
+
+        
+      }
+    })();
+},{"vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"router.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.routes = void 0;
 
 var _vue = _interopRequireDefault(require("vue"));
 
@@ -16098,45 +16181,85 @@ var _toast = _interopRequireDefault(require("./views/toast.vue"));
 
 var _tabs = _interopRequireDefault(require("./views/tabs.vue"));
 
+var _tooltip = _interopRequireDefault(require("./views/tooltip.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue.default.use(_vueRouter.default);
 
+var routes = [{
+  name: 'Home',
+  path: '/',
+  component: _home.default
+}, {
+  name: 'Button - 按钮',
+  path: '/button',
+  component: _button.default
+}, {
+  name: 'Input - 输入框',
+  path: '/input',
+  component: _input.default
+}, {
+  name: 'Grid - 栅格系统',
+  path: '/grid',
+  component: _grid.default
+}, {
+  name: 'Layouts - 布局',
+  path: '/layouts',
+  component: _layouts.default
+}, {
+  name: 'Toast - 遮罩',
+  path: '/toast',
+  component: _toast.default
+}, {
+  name: 'Tabs - 标签页',
+  path: '/tabs',
+  component: _tabs.default
+}, {
+  name: 'Tooltip - 文字提示',
+  path: '/tooltip',
+  component: _tooltip.default
+}];
+exports.routes = routes;
 var router = new _vueRouter.default({
-  routes: [{
-    name: '首页',
-    path: '/',
-    component: _home.default
-  }, {
-    name: 'Button - 按钮',
-    path: '/button',
-    component: _button.default
-  }, {
-    name: 'Input - 输入框',
-    path: '/input',
-    component: _input.default
-  }, {
-    name: 'Grid - 栅格系统',
-    path: '/grid',
-    component: _grid.default
-  }, {
-    name: 'Layouts - 布局',
-    path: '/layouts',
-    component: _layouts.default
-  }, {
-    name: 'Toast - ',
-    path: '/toast',
-    component: _toast.default
-  }, {
-    name: 'Tabs - 标签页',
-    path: '/tabs',
-    component: _tabs.default
-  }]
+  routes: routes
 });
 var _default = router;
 exports.default = _default;
-},{"vue":"../node_modules/vue/dist/vue.common.js","vue-router":"../node_modules/vue-router/dist/vue-router.esm.js","./views/home.vue":"views/home.vue","./views/button.vue":"views/button.vue","./views/input.vue":"views/input.vue","./views/grid.vue":"views/grid.vue","./views/layouts.vue":"views/layouts.vue","./views/toast.vue":"views/toast.vue","./views/tabs.vue":"views/tabs.vue"}],"App.vue":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.common.js","vue-router":"../node_modules/vue-router/dist/vue-router.esm.js","./views/home.vue":"views/home.vue","./views/button.vue":"views/button.vue","./views/input.vue":"views/input.vue","./views/grid.vue":"views/grid.vue","./views/layouts.vue":"views/layouts.vue","./views/toast.vue":"views/toast.vue","./views/tabs.vue":"views/tabs.vue","./views/tooltip.vue":"views/tooltip.vue"}],"App.vue":[function(require,module,exports) {
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _router = require("./router");
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  data: function data() {
+    return {
+      menu: _router.routes
+    };
+  }
+};
+exports.default = _default;
         var $5bb8d6 = exports.default || module.exports;
       
       if (typeof $5bb8d6 === 'function') {
@@ -16150,56 +16273,23 @@ exports.default = _default;
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "comp-view" }, [
-    _c("div", { staticClass: "side-menu" }, [
-      _c(
-        "div",
-        { staticClass: "link-item" },
-        [_c("router-link", { attrs: { to: "/" } }, [_vm._v("首页")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "link-item" },
-        [_c("router-link", { attrs: { to: "/button" } }, [_vm._v("Button")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "link-item" },
-        [_c("router-link", { attrs: { to: "/input" } }, [_vm._v("Input")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "link-item" },
-        [_c("router-link", { attrs: { to: "/grid" } }, [_vm._v("Grid")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "link-item" },
-        [_c("router-link", { attrs: { to: "/layouts" } }, [_vm._v("Layouts")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "link-item" },
-        [_c("router-link", { attrs: { to: "/toast" } }, [_vm._v("Toast")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "link-item" },
-        [_c("router-link", { attrs: { to: "/tabs" } }, [_vm._v("Tabs")])],
-        1
-      )
-    ]),
+    _c(
+      "div",
+      { staticClass: "side-menu" },
+      _vm._l(_vm.menu, function(item) {
+        return _c(
+          "div",
+          { key: item.name, staticClass: "link-item" },
+          [
+            _c("router-link", { attrs: { to: item.path } }, [
+              _vm._v(_vm._s(item.name))
+            ])
+          ],
+          1
+        )
+      }),
+      0
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -16252,7 +16342,7 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Icon/Icon.vue":[function(require,module,exports) {
+},{"./router":"router.js","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Icon/Icon.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16820,28 +16910,22 @@ var _default = {
       type: [Number, String]
     },
     xs: {
-      type: Object,
-      validator: validator
+      type: [Object, Number, String]
     },
     sm: {
-      type: Object,
-      validator: validator
+      type: [Object, Number, String]
     },
     md: {
-      type: Object,
-      validator: validator
+      type: [Object, Number, String]
     },
     lg: {
-      type: Object,
-      validator: validator
+      type: [Object, Number, String]
     },
     xl: {
-      type: Object,
-      validator: validator
+      type: [Object, Number, String]
     },
     xxl: {
-      type: Object,
-      validator: validator
+      type: [Object, Number, String]
     }
   },
   data: function data() {
@@ -17925,6 +18009,131 @@ render._withStripped = true
       
       }
     })();
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Tooltip/Tooltip.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'g-tooltip',
+  data: function data() {
+    return {
+      visible: false
+    };
+  },
+  mounted: function mounted() {// console.log(this.$refs)
+  },
+  methods: {
+    onClick: function onClick(event) {
+      console.log(event.target); // this.visible = !this.visible
+      // if (this.visible) {
+      //   this.$nextTick(() => {
+      //     document.body.appendChild(this.$refs.tooltipContentWrap)
+      //     let { width, height, top, left } = this.$refs.trigger.getBoundingClientRect()
+      //     console.log(width, height, top, left)
+      //     this.$refs.tooltipContentWrap.style.left = left + window.scrollX + 'px'
+      //     this.$refs.tooltipContentWrap.style.top = top + window.scrollY - (height + 30) + 'px'
+      //     let eventHandler = () => {
+      //       this.visible = false
+      //       document.removeEventListener('click', eventHandler)
+      //     }
+      //     document.addEventListener('click', eventHandler)
+      //   })
+      // }
+    }
+  }
+};
+exports.default = _default;
+        var $6fc64b = exports.default || module.exports;
+      
+      if (typeof $6fc64b === 'function') {
+        $6fc64b = $6fc64b.options;
+      }
+    
+        /* template */
+        Object.assign($6fc64b, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "g-tooltip",
+      on: {
+        click: function($event) {
+          $event.stopPropagation()
+          return _vm.onClick($event)
+        }
+      }
+    },
+    [
+      _vm.visible
+        ? _c(
+            "div",
+            { ref: "tooltipContentWrap", staticClass: "tooltip-content" },
+            [_vm._t("content")],
+            2
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { ref: "trigger" }, [_vm._t("default")], 2)
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-6fc64b",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$6fc64b', $6fc64b);
+          } else {
+            api.reload('$6fc64b', $6fc64b);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"main.js":[function(require,module,exports) {
 "use strict";
 
@@ -17975,6 +18184,8 @@ var _Body = _interopRequireDefault(require("./components/Tabs/Body.vue"));
 
 var _Pane = _interopRequireDefault(require("./components/Tabs/Pane.vue"));
 
+var _Tooltip = _interopRequireDefault(require("./components/Tooltip/Tooltip.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue.default.config.productionTip = false;
@@ -18016,6 +18227,8 @@ _vue.default.component('g-tab-body', _Body.default);
 
 _vue.default.component('g-tab-pane', _Pane.default);
 
+_vue.default.component('g-tooltip', _Tooltip.default);
+
 var _default = new _vue.default({
   router: _router.default,
   render: function render(h) {
@@ -18024,7 +18237,7 @@ var _default = new _vue.default({
 }).$mount('#app');
 
 exports.default = _default;
-},{"vue":"../node_modules/vue/dist/vue.common.js","./router":"router.js","./App.vue":"App.vue","./components/Icon/Icon.vue":"components/Icon/Icon.vue","./components/Button/Button.vue":"components/Button/Button.vue","./components/Button/ButtonGroup.vue":"components/Button/ButtonGroup.vue","./components/Input/Input.vue":"components/Input/Input.vue","./components/Grid/Row.vue":"components/Grid/Row.vue","./components/Grid/Col.vue":"components/Grid/Col.vue","./components/Layouts/Layout.vue":"components/Layouts/Layout.vue","./components/Layouts/Sider.vue":"components/Layouts/Sider.vue","./components/Layouts/Content.vue":"components/Layouts/Content.vue","./components/Layouts/Header.vue":"components/Layouts/Header.vue","./components/Layouts/Footer.vue":"components/Layouts/Footer.vue","./components/Toast/Toast.vue":"components/Toast/Toast.vue","./plugin":"plugin.js","./components/Tabs/Tabs.vue":"components/Tabs/Tabs.vue","./components/Tabs/Head.vue":"components/Tabs/Head.vue","./components/Tabs/Nav.vue":"components/Tabs/Nav.vue","./components/Tabs/Body.vue":"components/Tabs/Body.vue","./components/Tabs/Pane.vue":"components/Tabs/Pane.vue"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.common.js","./router":"router.js","./App.vue":"App.vue","./components/Icon/Icon.vue":"components/Icon/Icon.vue","./components/Button/Button.vue":"components/Button/Button.vue","./components/Button/ButtonGroup.vue":"components/Button/ButtonGroup.vue","./components/Input/Input.vue":"components/Input/Input.vue","./components/Grid/Row.vue":"components/Grid/Row.vue","./components/Grid/Col.vue":"components/Grid/Col.vue","./components/Layouts/Layout.vue":"components/Layouts/Layout.vue","./components/Layouts/Sider.vue":"components/Layouts/Sider.vue","./components/Layouts/Content.vue":"components/Layouts/Content.vue","./components/Layouts/Header.vue":"components/Layouts/Header.vue","./components/Layouts/Footer.vue":"components/Layouts/Footer.vue","./components/Toast/Toast.vue":"components/Toast/Toast.vue","./plugin":"plugin.js","./components/Tabs/Tabs.vue":"components/Tabs/Tabs.vue","./components/Tabs/Head.vue":"components/Tabs/Head.vue","./components/Tabs/Nav.vue":"components/Tabs/Nav.vue","./components/Tabs/Body.vue":"components/Tabs/Body.vue","./components/Tabs/Pane.vue":"components/Tabs/Pane.vue","./components/Tooltip/Tooltip.vue":"components/Tooltip/Tooltip.vue"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -18052,7 +18265,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52161" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54089" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

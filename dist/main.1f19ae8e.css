@@ -28,9 +28,10 @@
 .comp-view .side-menu[data-v-5bb8d6] {
   position: fixed;
   left: 20px;
-  top: 60px;
+  top: 30px;
   height: calc(100vh - 90px);
-  width: 140px;
+  padding-top: 30px;
+  width: 170px;
   overflow: hidden;
   overflow-y: auto;
   border-right: 1px dashed #ccc;
@@ -48,7 +49,7 @@
   color: #58aed2;
 }
 .comp-view .main-wrap[data-v-5bb8d6] {
-  margin-left: 200px;
+  margin-left: 220px;
   height: calc(100vh - 35px);
   overflow: hidden;
   overflow-y: auto;
@@ -977,5 +978,18 @@
 
 .tab-pane[data-v-5a7874] {
   flex-shrink: 0;
+}
+
+.g-tooltip[data-v-6fc64b] {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+.tooltip-content[data-v-6fc64b] {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #dfdfdf;
+  border-radius: 3px;
+  padding: 10px;
 }
 

@@ -1,26 +1,8 @@
 <template>
   <div class="comp-view">
     <div class="side-menu">
-      <div class="link-item">
-        <router-link to="/">首页</router-link>
-      </div>
-      <div class="link-item">
-        <router-link to="/button">Button</router-link>
-      </div>
-      <div class="link-item">
-        <router-link to="/input">Input</router-link>
-      </div>
-      <div class="link-item">
-        <router-link to="/grid">Grid</router-link>
-      </div>
-      <div class="link-item">
-        <router-link to="/layouts">Layouts</router-link>
-      </div>
-      <div class="link-item">
-        <router-link to="/toast">Toast</router-link>
-      </div>
-      <div class="link-item">
-        <router-link to="/tabs">Tabs</router-link>
+      <div class="link-item" v-for="item in menu" :key="item.name">
+        <router-link :to="item.path">{{item.name}}</router-link>
       </div>
     </div>
     <div class="main-wrap">
@@ -31,6 +13,18 @@
     </div>
   </div>
 </template>
+
+<script>
+import {routes} from './router'
+export default {
+  data() {
+    return {
+      menu: routes
+    }
+  }
+}
+</script>
+
 
 <style lang="stylus" scoped>
 .comp-view
@@ -43,9 +37,10 @@
   .side-menu
     position fixed
     left 20px
-    top 60px
+    top 30px
     height calc(100vh - 90px)
-    width 140px
+    padding-top 30px
+    width 170px
     overflow hidden
     overflow-y auto
     border-right 1px dashed #ccc
@@ -60,7 +55,7 @@
         color #58aed2
 
   .main-wrap
-    margin-left 200px
+    margin-left 220px
     height calc(100vh - 35px)
     overflow hidden
     overflow-y auto

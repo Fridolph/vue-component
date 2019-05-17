@@ -28,12 +28,24 @@ export default {
     offset: {
       type: [Number, String],
     },
-    xs: { type: Object, validator },
-    sm: { type: Object, validator },
-    md: { type: Object, validator },
-    lg: { type: Object, validator },
-    xl: { type: Object, validator },
-    xxl: { type: Object, validator },
+    xs: {
+      type: [Object, Number, String]
+    },
+    sm: {
+      type: [Object, Number, String]
+    },
+    md: {
+      type: [Object, Number, String]
+    },
+    lg: {
+      type: [Object, Number, String]
+    },
+    xl: {
+      type: [Object, Number, String]
+    },
+    xxl: {
+      type: [Object, Number, String]
+    },
   },
   data() {
     return {

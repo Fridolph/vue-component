@@ -22905,28 +22905,22 @@ var _default = {
       type: [Number, String]
     },
     xs: {
-      type: Object,
-      validator: validator
+      type: [Object, Number, String]
     },
     sm: {
-      type: Object,
-      validator: validator
+      type: [Object, Number, String]
     },
     md: {
-      type: Object,
-      validator: validator
+      type: [Object, Number, String]
     },
     lg: {
-      type: Object,
-      validator: validator
+      type: [Object, Number, String]
     },
     xl: {
-      type: Object,
-      validator: validator
+      type: [Object, Number, String]
     },
     xxl: {
-      type: Object,
-      validator: validator
+      type: [Object, Number, String]
     }
   },
   data: function data() {
