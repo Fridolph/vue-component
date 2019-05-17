@@ -1,5 +1,5 @@
 <template>
-  <div class="g-tab-nav" @click="selectNav" :class="active ? 'active' : ''">
+  <div :class="['g-tab-nav', cls]" @click="selectNav" :data-name="name">
     <slot></slot>
   </div>
 </template>
@@ -13,28 +13,43 @@ export default {
       type: Boolean,
       default: false
     },
-    name: String | Number,
-    required: true
+    name: {
+      type: String | Number,
+      required: true
+    }
   },
   data() {
     return {
-      active: false,
+      active: false
     }
   },
-  mounted() {
-    this.eventBus.$on('update:selected', (name, vm) => {
-      if (name === this.name) {
-        console.log(`[x] ${this.name}nav被选中了`, vm.$el)
-        this.active = true
-      } else {
-        console.log(`[ ] ${this.name}nav没被选中`)
-        this.active = false
+  computed: {
+    cls() {
+      return {
+        active: this.active,
+        disabled: this.disabled
       }
-    })
+    }
+  },
+  created() {
+    if (this.eventBus) {
+      this.eventBus.$on('update:selected', (name, vm) => {
+        if (name === this.name) {
+          // console.log(`[x] ${this.name}nav被选中了`, vm.$el)
+          this.active = true
+        } else {
+          // console.log(`[ ] ${this.name}nav没被选中`)
+          this.active = false
+        }
+      })
+    }
   },
   methods: {
     selectNav() {
-      this.eventBus.$emit('update:selected', this.name)
+      if (!this.disabled) {
+        this.eventBus && this.eventBus.$emit('update:selected', this.name, this)
+        this.$emit('click', this)
+      }
     }
   }
 }
@@ -43,7 +58,13 @@ export default {
 <style lang="stylus" scoped>
 .g-tab-nav
   padding 0 1em
+  line-height 30px
   cursor pointer
   &.active
-    color red
+    color skyblue
+    font-weight bold
+  &.disabled
+    color #ccc
+    cursor not-allowed
+    user-select none
 </style>

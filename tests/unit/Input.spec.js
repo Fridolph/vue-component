@@ -3,6 +3,9 @@ import chai from 'chai'
 import sinon from 'sinon'
 import Input from '../../src/components/Input/Input.vue'
 
+Vue.config.productionTip = false
+Vue.config.devtools = false
+
 chai.use(require('sinon-chai'))
 
 describe('Input', () => {

@@ -23021,6 +23021,8 @@ var _Col = _interopRequireDefault(require("../../src/components/Grid/Col.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+_vue.default.config.productionTip = false;
+_vue.default.config.devtools = false;
 describe('Grid', function () {
   describe('Row', function () {
     it('Row Exist', function () {
@@ -23142,7 +23144,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49789" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52180" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

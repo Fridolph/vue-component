@@ -15973,6 +15973,9 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
 var _default = {
   name: 'page-tabs'
 };
@@ -16003,7 +16006,11 @@ exports.default = _default;
               _vm._v(" "),
               _c("g-tab-nav", { attrs: { name: "财经" } }, [_vm._v("财经")]),
               _vm._v(" "),
-              _c("g-tab-nav", { attrs: { name: "新闻" } }, [_vm._v("新闻")])
+              _c("g-tab-nav", { attrs: { name: "新闻" } }, [_vm._v("新闻")]),
+              _vm._v(" "),
+              _c("g-tab-nav", { attrs: { name: "未知", disabled: "" } }, [
+                _vm._v("未知")
+              ])
             ],
             1
           ),
@@ -16021,6 +16028,10 @@ exports.default = _default;
               _vm._v(" "),
               _c("g-tab-pane", { attrs: { name: "新闻" } }, [
                 _vm._v("新闻咨询")
+              ]),
+              _vm._v(" "),
+              _c("g-tab-pane", { attrs: { name: "未知" } }, [
+                _vm._v("未知的？")
               ])
             ],
             1
@@ -17472,15 +17483,20 @@ var _default = {
   mounted: function mounted() {
     var _this = this;
 
+    // console.log('tabs $children', this.$children)
+    if (this.$children.length === 0) {
+      console.warn('tabs的子组件应该是 g-tab-head和g-tab-body，请传入');
+    }
+
     this.$children.forEach(function (vm) {
       if (vm.$options.name === 'g-tab-head') {
         vm.$children.forEach(function (nav) {
-          if (nav.$options.name == 'g-tab-nav' && nav.name == _this.selected) {
+          if (nav.$options.name === 'g-tab-nav' && nav.name === _this.selected) {
             _this.eventBus.$emit('update:selected', _this.selected, nav);
           }
         });
       }
-    });
+    }); // this.eventBus.$emit('update:selected', this.selected)
   }
 };
 exports.default = _default;
@@ -17545,14 +17561,20 @@ var _default = {
   name: 'g-tab-head',
   inject: ['eventBus'],
   mounted: function mounted() {
+    var _this = this;
+
     this.eventBus.$on('update:selected', function (nav, vm) {
       var _vm$$el$getBoundingCl = vm.$el.getBoundingClientRect(),
           width = _vm$$el$getBoundingCl.width,
           height = _vm$$el$getBoundingCl.height,
           top = _vm$$el$getBoundingCl.top,
-          left = _vm$$el$getBoundingCl.left;
+          left = _vm$$el$getBoundingCl.left; // console.log('head触发', vm.$el.getBoundingClientRect())
 
-      console.log('head触发', vm.$el.getBoundingClientRect()); // this.$refs.line.style.width = `${width}px`
+
+      _this.$nextTick(function () {
+        _this.$refs.line.style.width = "".concat(width, "px");
+        _this.$refs.line.style.left = "".concat(left - 200, "px");
+      });
     });
   }
 };
@@ -17634,30 +17656,45 @@ var _default = {
       type: Boolean,
       default: false
     },
-    name: String | Number,
-    required: true
+    name: {
+      type: String | Number,
+      required: true
+    }
   },
   data: function data() {
     return {
       active: false
     };
   },
-  mounted: function mounted() {
+  computed: {
+    cls: function cls() {
+      return {
+        active: this.active,
+        disabled: this.disabled
+      };
+    }
+  },
+  created: function created() {
     var _this = this;
 
-    this.eventBus.$on('update:selected', function (name, vm) {
-      if (name === _this.name) {
-        console.log("[x] ".concat(_this.name, "nav\u88AB\u9009\u4E2D\u4E86"), vm.$el);
-        _this.active = true;
-      } else {
-        console.log("[ ] ".concat(_this.name, "nav\u6CA1\u88AB\u9009\u4E2D"));
-        _this.active = false;
-      }
-    });
+    if (this.eventBus) {
+      this.eventBus.$on('update:selected', function (name, vm) {
+        if (name === _this.name) {
+          // console.log(`[x] ${this.name}nav被选中了`, vm.$el)
+          _this.active = true;
+        } else {
+          // console.log(`[ ] ${this.name}nav没被选中`)
+          _this.active = false;
+        }
+      });
+    }
   },
   methods: {
     selectNav: function selectNav() {
-      this.eventBus.$emit('update:selected', this.name);
+      if (!this.disabled) {
+        this.eventBus && this.eventBus.$emit('update:selected', this.name, this);
+        this.$emit('click', this);
+      }
     }
   }
 };
@@ -17677,8 +17714,8 @@ exports.default = _default;
   return _c(
     "div",
     {
-      staticClass: "g-tab-nav",
-      class: _vm.active ? "active" : "",
+      class: ["g-tab-nav", _vm.cls],
+      attrs: { "data-name": _vm.name },
       on: { click: _vm.selectNav }
     },
     [_vm._t("default")],
@@ -17732,8 +17769,7 @@ exports.default = void 0;
 var _default = {
   name: 'g-tab-body',
   inject: ['eventBus'],
-  created: function created() {
-    console.log('给BODY的eventBus', this.eventBus);
+  created: function created() {// console.log('给BODY的eventBus', this.eventBus)
   }
 };
 exports.default = _default;
@@ -17758,7 +17794,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: null,
+            _scopeId: "data-v-e03095",
             functional: undefined
           };
         })());
@@ -17778,9 +17814,13 @@ render._withStripped = true
         }
 
         
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
       }
     })();
-},{"vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Tabs/Pane.vue":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/Tabs/Pane.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17816,10 +17856,10 @@ var _default = {
 
     this.eventBus.$on('update:selected', function (name) {
       if (name === _this.name) {
-        console.log("[x] ".concat(_this.name, "pane\u88AB\u9009\u4E2D\u4E86"));
+        // console.log(`[x] ${this.name}pane被选中了`)
         _this.active = true;
       } else {
-        console.log("[ ] ".concat(_this.name, "pane\u6CA1\u88AB\u9009\u4E2D"));
+        // console.log(`[ ] ${this.name}pane没被选中`)
         _this.active = false;
       }
     });
@@ -18012,7 +18052,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59022" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52161" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

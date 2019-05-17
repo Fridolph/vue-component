@@ -3,6 +3,9 @@ import sinon from 'sinon'
 import Vue from 'vue'
 import Toast from '../../src/components/Toast/Toast.vue'
 
+Vue.config.productionTip = false
+Vue.config.devtools = false
+
 chai.use(require('sinon-chai'))
 
 describe('Toast', () => {

@@ -3,6 +3,9 @@ import Vue from 'vue'
 import Row from '../../src/components/Grid/Row.vue'
 import Col from '../../src/components/Grid/Col.vue'
 
+Vue.config.productionTip = false
+Vue.config.devtools = false
+
 describe('Grid', () => {
 
   describe('Row', () => {

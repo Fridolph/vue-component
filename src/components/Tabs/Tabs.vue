@@ -31,15 +31,20 @@ export default {
     }
   },
   mounted() {
+    // console.log('tabs $children', this.$children)
+    if (this.$children.length === 0) {
+      console.warn('tabs的子组件应该是 g-tab-head和g-tab-body，请传入')
+    }
     this.$children.forEach(vm => {
       if (vm.$options.name === 'g-tab-head') {
         vm.$children.forEach(nav => {
-          if (nav.$options.name == 'g-tab-nav' && nav.name == this.selected) {
+          if (nav.$options.name === 'g-tab-nav' && nav.name === this.selected) {
             this.eventBus.$emit('update:selected', this.selected, nav)
           }
         })
       }
     })
+    // this.eventBus.$emit('update:selected', this.selected)
   }
 }
 </script>

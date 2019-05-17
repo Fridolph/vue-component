@@ -23069,6 +23069,8 @@ var _ButtonGroup = _interopRequireDefault(require("../../src/components/Button/B
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+_vue.default.config.productionTip = false;
+_vue.default.config.devtools = false;
 describe('Button', function () {
   it('Exist', function () {
     var Ctor = _vue.default.extend(_Button.default);
@@ -23113,7 +23115,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49789" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52180" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

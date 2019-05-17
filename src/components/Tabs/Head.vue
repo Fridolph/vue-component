@@ -12,8 +12,11 @@ export default {
   mounted() {
     this.eventBus.$on('update:selected', (nav, vm) => {
       let { width, height, top, left } = vm.$el.getBoundingClientRect()
-      console.log('head触发', vm.$el.getBoundingClientRect())
-      // this.$refs.line.style.width = `${width}px`
+      // console.log('head触发', vm.$el.getBoundingClientRect())
+      this.$nextTick(() => {
+        this.$refs.line.style.width = `${width}px`
+        this.$refs.line.style.left = `${left - 200}px`
+      })
     })
   }
 }
@@ -26,10 +29,16 @@ $tab-height: 40px
   display flex
   height $tab-height
   align-items center
-  border 1px solid #dedede
   position relative
+  border-bottom 1px solid #dedede
   .line
     position absolute
     bottom 0
-    border-bottom px solid skyblue
+    border-bottom 2px solid skyblue
+    transition 0.3s
+  .action-wrapper
+    margin-left auto
+    display flex
+    align-items center
+    justify-content center
 </style>

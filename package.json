@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "npx parcel ./src/index.html --no-cache",
     "test": "npx karma start",
-    "test-dev": "npx parcel ./tests/**/* --no-cache",
-    "karma": "npx karma start"
+    "test-dev": "npx parcel ./tests/**/* --no-cache"
   },
   "repository": {
     "type": "git",
